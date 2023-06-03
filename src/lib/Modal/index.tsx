@@ -8,7 +8,7 @@ interface Props {
   openTrigger: Dispatch<SetStateAction<boolean>>;
   isTriggered: boolean;
   children: ReactNode;
-  modalStyle: CSSProp;
+  modalStyle?: CSSProp;
   initialState?: boolean;
   direction?: Direction;
   backdropColor?: string;
@@ -39,6 +39,7 @@ const Modal = ({
         isTriggered={isTriggered}
         onClick={() => openTrigger(false)}
         backdropColor={backdropColor}
+        initialState={initialState}
       />
 
       <S.Modal
@@ -68,7 +69,8 @@ const Modal = ({
 };
 
 const S = {
-  Backdrop: styled.div<{ backdropColor?: string; isTriggered: boolean }>`
+  Backdrop: styled.div<{ initialState?: boolean; backdropColor?: string; isTriggered: boolean }>`
+    display: ${({ initialState }) => !initialState && 'none'};
     position: fixed;
     top: 0;
     left: 0;
@@ -89,7 +91,7 @@ const S = {
     isTriggered: boolean;
     direction?: Direction;
     initialState?: boolean;
-    css: CSSProp;
+    css?: CSSProp;
   }>`
     display: ${({ initialState }) => !initialState && 'none'};
     position: absolute;
