@@ -36,12 +36,12 @@ const Example = () => {
   const [isClicked, setIsClicked] = useState(false);
   const [initialState, setInitialState] = useState(false);
 
-  const handleCouponButtonClick = () => {
+  const handleButtonClick = () => {
     setIsClicked(true);
     setInitialState(true);
   };
 
-  <Button onClick={handleCouponButtonClick}>
+  <Button onClick={handleButtonClick}>
     Trigger Button
   </Button>
 
